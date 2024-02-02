@@ -10,6 +10,7 @@ const createProduct = async (req, res) => {
   }
 };
 
+
 const getProductById = async (req, res) => {
   try {
     const product = await Product.findById(req.params.productId);
@@ -18,59 +19,6 @@ const getProductById = async (req, res) => {
     res.status(404).json({ error: 'Product not found' });
   }
 };
-
-// const updateProduct = async (req, res) => {
-//   try {
-//     const product = await Product.findByIdAndUpdate(
-//       req.params.productId,
-//       req.body,
-//       { new: true } // Return the updated document
-//     );
-//     res.status(200).json(product);
-//   } catch (error) {
-//     res.status(500).json({ error: 'Internal Server Error' });
-//   }
-// };
-
-// const updateProduct = async (req, res) => {
-//   try {
-//     // Check if another entry already exists
-//     const existingProduct = await Product.findOne({ /* Your condition to check if another entry exists */ });
-
-//     if (existingProduct) {
-//       // If another entry exists, create a new entry with existing and new data
-//       const newProduct = new Product({
-//         // Combine existingProduct data with req.body data as needed
-//         price: req.body.price || existingProduct.price,
-//         description: req.body.description || existingProduct.description,
-//         name: req.body.name || existingProduct.name,
-//         // Add other fields as needed
-//       });
-
-//       // Save the new product entry
-//       const savedProduct = await newProduct.save();
-//       res.status(200).json(savedProduct);
-//     } else {
-//       // If no other entry exists, update the existing product
-//       const updatedProduct = await Product.findByIdAndUpdate(
-//         req.params.productId,
-//         {
-//           // Ensure req.body contains all required fields
-//           price: req.body.price,
-//           description: req.body.description,
-//           name: req.body.name,
-//           // Add other fields as needed
-//         },
-//         { new: true } // Return the updated document
-//       );
-
-//       res.status(200).json(updatedProduct);
-//     }
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ error: 'Internal Server Error' });
-//   }
-// };
 
 
 const updateProduct = async (req, res) => {
@@ -126,9 +74,6 @@ const updateProduct = async (req, res) => {
 
 
 
-
-
-
 const deleteProduct = async (req, res) => {
   try {
     await Product.findByIdAndDelete(req.params.productId);
@@ -137,6 +82,7 @@ const deleteProduct = async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
+
 
 const searchProducts = async (req, res) => {
   try {
@@ -161,6 +107,7 @@ const searchProducts = async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
+
 
 module.exports = {
   createProduct,

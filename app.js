@@ -18,7 +18,7 @@ connectDB()
   })
   .catch((error) => {
     console.error('MongoDB connection error:', error, process.env.MONGODB_URI);
-    process.exit(1); // Exit the process if MongoDB connection fails
+    process.exit(1);  // Exit the process if MongoDB connection fails
   });
 
 app.use(bodyParser.json());
@@ -29,7 +29,7 @@ const server = app.listen(PORT, () => {
 });
 
 app.get('/', (req, res) => {
-  res.send('Welcome to the API!'); // or you can redirect or render a homepage
+  res.send('Welcome to the API!');  // or you can redirect or render a homepage
 });
 
 

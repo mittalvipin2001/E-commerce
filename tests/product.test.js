@@ -7,6 +7,7 @@ const app = require('../app');
 const Product = require('../models/productModel');
 
 // Connect to the test database before running tests
+
 let server;
 const PORT = 3001;
 
@@ -40,11 +41,13 @@ afterAll(async () => {
 
 
 // Clear the database before each model test
+
 beforeEach(async () => {
   await Product.deleteMany();
 });
 
 // Describe your tests...
+
 describe('Product Model', () => {
   test('should create a new product', async () => {
     const productData = { name: 'Test Product', description:'test description', price: 20 };
@@ -52,7 +55,6 @@ describe('Product Model', () => {
 
     expect(product).toMatchObject(productData);
   });
-
 });
 
 describe('Product Endpoints', () => {
@@ -73,8 +75,6 @@ describe('Product Endpoints', () => {
     expect(response.statusCode).toBe(200);
     expect(response.body).toMatchObject({ _id: product._id.toString() });
   });
-
-
 });
 
 describe('Search Functionality', () => {
@@ -86,6 +86,4 @@ describe('Search Functionality', () => {
     expect(response.statusCode).toBe(200);
     expect(response.body).toHaveLength(1);
   });
-
-
 });
