@@ -42,9 +42,9 @@ const updateProduct = async (req, res) => {
       existingProduct.variants = existingProduct.variants.concat(
         req.body.variants.map((variant) => ({
           name: variant.name || '',
-          description: variant.description || '',
-          price: variant.price || 0,
-          sku: variant.sku,
+          sku: variant.sku || '',
+          additionalCost: variant.additionalCost || 0,
+          stockCount: variant.stockCount || 0,
         }))
       );
       
